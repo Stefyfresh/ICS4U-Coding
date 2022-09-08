@@ -1,2 +1,2 @@
 # ICS4U-Coding
-Coding workspace for ICS4U
+Coding workspace for ICS4U.
