@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'Cabin';
+            font-style: normal;
+            font-weight: 400;
+            font-stretch: 100%;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/cabin/v26/u-4i0qWljRw-PfU81xCKCpdpbgZJl6Xvqdns.woff2) format('woff2');
+        }
+
+        body{
+            margin: 0;
+            font-family: 'Cabin';
+            line-height: 1.6em;
+        }
+
+        #site-banner{
+            display: flex;
+            background-color: #3c524a;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+        #navbar li{
+            display: inline;
+            padding: 0 20px;
+            font-size: .9em;
+        }
+
+        #navbar li a{
+            color: white;
+            text-decoration: none;
+        }
+
+        #navbar li a:hover{
+            text-decoration: underline;
+        }
+
+        #navbar ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #bvg-container{
+            margin: 0;
+            padding: 20px;
+            max-width: fit-content;
+            margin-right: 50px;
+
+        }
+
+        #bvg{
+            max-width: 200px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div id="site-banner">
+		<div>
+			<div id="bvg-container">
+				<a href="https://www.bayviewglen.ca" class="logo">
+                    <img id="bvg" src="https://www.bayviewglen.ca/wp-content/themes/_bvg/images/Logo_BayviewGlen_IndependentSchool_white-colour_rgb.svg" alt="Bayview Glen">
+                </a>
+			</div>
+		</div>
+		<nav id="navbar" aria-label="Resources and Tools">
+            <div class="menu-container">
+                <ul>
+                    <li><a href="https://www.bayviewglen.ca/covid-19/">COVID-19</a></li>
+                    <li><a href="https://www.bayviewglen.ca/parent-and-student-resources/">Parent and Student Resources</a></li>
+                    <li><a href="https://www.bayviewglen.ca/alumni/">Alumni</a></li>
+                    <li><a href="https://www.bayviewglen.ca/news-publications/">News and Publications</a></li>
+                    <li><a href="https://www.bayviewglen.ca/60th-celebration/">60th Celebration</a></li>
+                    <li><a href="https://www.bayviewglen.ca/support-bvg/donate-online/">Donate Online</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>
