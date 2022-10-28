@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .highlight {
+            background-color: red;
+            width: 500px;
+            padding: 5px;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <p id="one">Hello world!</p>
+        <p id="two">Hello world!</p>
+    </section>
+    <section></section>
+</body>
+
+<!-- Script is after the body so that the body loads first -->
+<script>
+    const paragraphs = document.querySelectorAll('p#one'); // Gets all of the paragraph elements as a NodeList
+    console.log(paragraphs); // List
+
+    const oneParagraph = document.querySelector('p:last-of-type');
+
+    console.log(oneParagraph); // Single node
+
+
+    const newParagraph = document.createElement('p');
+    newParagraph.textContent = "Here is some text.";
+
+    const section = document.querySelector('section');
+    section.appendChild(newParagraph);
+    // oneParagraph.append("More Stuff"); // Can append to a paragraph
+    // section.appendChild("More Stuff") //Cannot append a String object using append
+
+    const children = section.childNodes;
+
+    // newParagraph.style.backgroundColor = 'red';
+    // newParagraph.style.width = '500px';
+    // newParagraph.style.padding = '5px';
+    // newParagraph.style.color = 'yellow';
+
+    // newParagraph.setAttribute('class', 'highlight'); // Will replace ALL classes with highlight
+    // newParagraph.classList.add('highlight');
+
+    newParagraph.onmouseover = () => newParagraph.classList.add('highlight');
+    newParagraph.onmouseleave = () => newParagraph.classList.remove('highlight');
+</script>
+
+</html>
