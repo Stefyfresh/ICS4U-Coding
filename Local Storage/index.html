@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Demo</title>
+    <style>
+        #click-me {
+            background-color: blueviolet;
+
+        }
+    </style>
+</head>
+<body onload="getTeams();">
+    <div id="click-me" onclick="addGame();">Click Me</div>
+</body>
+
+<script>
+    localStorage.setItem('test', "local");
+    sessionStorage.setItem('test', "session");
+
+    localStorage.temp = [1,2,3,4,5,6];
+
+    let teamData;
+
+    function getTeams() {
+        teamData = JSON.parse(localStorage['teams']);
+    }
+
+    function addGame () {
+        const game = {
+            'opp' : 7, 
+            'homescore' : 6, 
+            'awayscore' : 6};
+        teamData[1].games.push(game);
+        localStorage.setItem('teams', JSON.stringify(teamData));
+    }
+
+    // let teams = [];
+    // let team = {};
+    // team['name'] = 'Toronto';
+    // team['id'] = 1;
+    // team['w'] = 0;
+    // team['l'] = 0;
+    // team['games'] = [];
+    // teams.push(team);
+
+    // team = {};
+    // team['name'] = 'New York';
+    // team['id'] = 1;
+    // team['w'] = 0;
+    // team['l'] = 0;
+    // team['games'] = [];
+    // teams.push(team);
+
+    // team = {};
+    // team['name'] = 'Houston';
+    // team['id'] = 1;
+    // team['w'] = 0;
+    // team['l'] = 0;
+    // team['games'] = [
+    //     {
+    //         'opp': 1,
+    //     },
+    //     {
+    //         'opp': 2,
+    //     }
+    // ]
+    // teams.push(team);
+
+    // localStorage.setItem('teams', JSON.stringify(teams))
+</script>
+</html>

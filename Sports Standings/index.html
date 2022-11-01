@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Standings</title>
+</head>
+<body onload="getTeams();">
+    
+</body>
+
+<script>
+    let teamData;
+
+    function getTeams() {
+        teamData = localStorage['teams'];
+    }
+
+    let teams = [];
+    let team = {};
+    team['name'] = 'Toronto';
+    team['id'] = 1;
+    team['w'] = 0;
+    team['l'] = 0;
+    teams.push(team);
+
+    team = {};
+    team['name'] = 'New York';
+    team['id'] = 1;
+    team['w'] = 0;
+    team['l'] = 0;
+    teams.push(team);
+
+    team = {};
+    team['name'] = 'Houston';
+    team['id'] = 1;
+    team['w'] = 0;
+    team['l'] = 0;
+    team['games'] = [
+        {
+            'opp': 1,
+
+        }
+    ]
+    teams.push(team);
+
+    localStorage.setItem('teams', JSON.stringify(teams))
+</script>
+</html>
