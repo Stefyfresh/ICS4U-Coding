@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Sports Standings</title>
+</head>
+
+<body onload="init();">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+                <img src="../img/logo.png" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="../matches/">
+                    Matches
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="../admin/">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-dropdown is-hidden" id="navMenu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="../matches/">
+                    Matches
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="section off-white-blue">
+        <div class="container">
+            <article class="message is-warning" id="message">
+                <div class="message-body">
+                    Error: no search params were specified.
+                </div>
+            </article>
+
+
+            <div class="box is-hidden" id="content">
+                <section class="hero is-small">
+                    <div class="hero-body">
+                        <p class="title" id="match-title">Match</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <div id="info"></div>
+                </section>
+
+                <section class="section">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box red">
+                                <table id="standings-red" class="table is-fullwidth">
+                                    <thead>
+                                        <tr class="red">
+                                            <th>Auto</th>
+                                            <th>Teleop</th>
+                                            <th>Foul</th>
+                                            <th>RP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="red">
+                                            <td id="red-auto" class="more-info-text"></td>
+                                            <td id="red-teleop" class="more-info-text"></td>
+                                            <td id="red-foul" class="more-info-text"></td>
+                                            <td id="red-rp" class="more-info-text"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="box blue">
+                                <table id="standings-blue" class="table is-fullwidth">
+                                    <thead>
+                                        <tr class="blue">
+                                            <th>Auto</th>
+                                            <th>Teleop</th>
+                                            <th>Foul</th>
+                                            <th>RP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="blue">
+                                            <td id="blue-auto" class="more-info-text"></td>
+                                            <td id="blue-teleop" class="more-info-text"></td>
+                                            <td id="blue-foul" class="more-info-text"></td>
+                                            <td id="blue-rp" class="more-info-text"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+
+
+    </section>
+
+
+</body>
+
+
+<script src="../js/match.js"></script>
+
+</html>

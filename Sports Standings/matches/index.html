@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matches</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+</head>
+
+<body onload="init();">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+                <img src="../img/logo.png" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../">
+                    Home
+                </a>
+
+                <a href="" class="navbar-item">
+                    Matches
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="../admin/">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-dropdown is-hidden" id="navMenu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../">
+                    Home
+                </a>
+
+                <a class="navbar-item">
+                    Matches
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="../admin/">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section class="section off-white-blue">
+        <div class="container">
+
+            <div class="box">
+                <section class="hero is-small">
+                    <div class="hero-body">
+                        <p class="title">Matches</p>
+                    </div>
+                </section>
+
+                <div class="tabs">
+                    <ul id="match-type">
+                        <li class="is-active" id="qualifying-button">
+                            <a onclick="createTable(0);">
+                                <span>Qualifying</span>
+                            </a>
+                        </li>
+                        <li id="semifinals-button">
+                            <a onclick="createTable(1);">
+                                <span>Semifinals</span>
+                            </a>
+                        </li>
+                        <li id="finals-button">
+                            <a onclick="createTable(2);">
+                                <span>Finals</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="container">
+                    <button class="button is-pulled-right is-hidden" onclick="document.location = '../matches/'" id="reset-filters">Reset Filters</button>
+
+
+
+                    <table id="standings" class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th class="main-table-header header-id" onclick="createTable(currentMatchType, 'id');">
+                                    <i></i>Match</th>
+                                <th class="small"><i></i>Video</th>
+                                <!-- <th class="has-text-right"><i></i>Red Alliance</th> -->
+                                <th>
+                                    <span class="main-table-header header-red"
+                                        onclick="createTable(currentMatchType, 'red');"><i></i>Red Alliance</span>
+                                    <span class="is-pulled-right main-table-header header-blue"
+                                        onclick="createTable(currentMatchType, 'blue');"><i></i>Blue
+                                        Alliance</span>
+                                </th>
+                                <!-- <th><i></i>Blue Alliance</th> -->
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div id="table-info">
+                        <ul id="pagination-list"></ul>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    </div>
+</body>
+
+<script src="../js/matches.js"></script>
+
+</html>

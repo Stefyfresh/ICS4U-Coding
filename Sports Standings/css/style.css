@@ -1,0 +1,164 @@
+.showcase {
+    background-image: url('../img/bg-dark.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 500px;
+    user-select: none;
+
+}
+
+.title-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.subtitle-text {
+    color: #fff;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.bigger-text {
+    color: black;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+
+.main-table-header {
+    cursor: pointer;
+    user-select: none;
+}
+
+.main-table-header i {
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+.off-white-blue {
+    background-color: #f4f4fb;
+}
+
+.red {
+    /* background-color: #ffbdc0; */
+    background-color: #ffd5d5;
+
+}
+
+.blue {
+    /* background-color: #b2b2ff; */
+    background-color: #c8e6ff;
+    /* color: rgb(54, 54, 54)!important; */
+}
+
+.red-strong {
+    /* background-color: #c52d25 !important; */
+    background-color: #ed1c25 !important;
+    color: #fff !important;
+}
+
+.blue-strong {
+    /* background-color: #377cB2; */
+    background-color: #0066b3;
+    border-color: #377cB2;
+
+    color: #fff !important;
+}
+
+.red-text {
+    color: #ed1c25 !important;
+
+    /* color: #c52d25; */
+}
+
+.blue-text {
+    color: #377cB2;
+}
+
+.colour-transition {
+    transition: background-color 0.05s ease-in-out;
+}
+
+.score-bar {
+    height: 8px;
+    border-radius: 2px;
+    width: 100%;
+    background-color: grey;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    user-select: none;
+
+}
+
+.small {
+    width: 5%;
+}
+
+table .score-table-item {
+    padding-left: 40px;
+    padding-right: 40px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+
+.biiig-text {
+    font-size: 30pt;
+}
+
+.match-number {
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.play-button {
+    cursor: pointer;
+    font-size: 20pt;
+    color: #363636;
+}
+
+.play-button:hover {
+    color: #2b387c;
+}
+
+.pagination-left-arrow {
+    margin-right: 20px;
+}
+
+.pagination-right-arrow {
+    margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+    .score-bar {
+        display: none;
+    }
+
+    .subtitle {
+        font-size: 10pt;
+    }
+
+    .biiig-text {
+        font-size: 20pt;
+    }
+
+    .pagination-left-arrow {
+        margin-right: 2px;
+    }
+
+    .pagination-right-arrow {
+        margin-left: 2px;
+    }
+}
+
+.more-info-text {
+    font-size: 20pt;
+    font-weight: 500;
+}

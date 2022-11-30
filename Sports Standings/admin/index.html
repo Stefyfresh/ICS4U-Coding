@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+</head>
+
+<body onload="init();">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="../">
+                <img src="../img/logo.png" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="../matches/">
+                    Matches
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-light" href="">
+                            Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-dropdown is-hidden" id="navMenu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="../">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="../matches/">
+                    Matches
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="section off-white-blue" id="login">
+        <div class="columns">
+            <div class="column"></div>
+
+            <div class="column is-half">
+                <form class="box" onsubmit="return false;">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Text input" id="username">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </div>
+                        <p class="help is-danger" id="username-error"></p>
+
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left">
+                            <input class="input" type="password" placeholder="********" id="password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </div>
+                        <p class="help is-danger" id="password-error"></p>
+
+                    </div>
+
+                    <div class="field">
+                        <button class="button is-success has-text-centered" onclick="auth()">Sign in</button>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="column"></div>
+        </div>
+
+    </section>
+
+
+
+    <section class="section off-white-blue is-hidden" id="main">
+        <div class="container">
+            <form class="box" onsubmit="return false;">
+                <h1 class="title has-text-centered">Add a Match</h1>
+
+                <div class="field" id="error">
+                </div>
+
+                <div class="box">
+                    <div class="field">
+                        <div class="columns">
+                            <div class="column">
+                                <label class="label">Match Type</label>
+
+                                <div class="dropdown match-type-dropdown">
+                                    <div class="dropdown-trigger">
+                                        <button class="button"
+                                            onclick="document.querySelector('.match-type-dropdown').classList.toggle('is-active')">
+                                            <span id="type">Select type</span>
+                                            <span class="icon is-small">
+                                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="dropdown-menu" role="menu">
+                                        <div class="dropdown-content">
+                                            <a class="dropdown-item" onclick="changeMatchType(0);">
+                                                Qualifying match
+                                            </a>
+                                            <a class="dropdown-item" onclick="changeMatchType(1);">
+                                                Semifinals match
+                                            </a>
+                                            <a class="dropdown-item" onclick="changeMatchType(2);">
+                                                Finals match
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <div class="column">
+                                <label class="label">Match Number</label>
+                                <div class="columns is-mobile">
+                                    <div class="column">
+                                        <input class="input" type="number" max="9999" min="1" placeholder="Match"
+                                            id="id" onblur="check(0)">
+                                    </div>
+                                    <div class="column"></div>
+                                </div>
+
+                                <p class=" help is-danger"></p>
+                            </div>
+                            <div class="column">
+                                <label class="label has-text-grey" id="semifinals-number">Semifinals Number</label>
+
+                                <div class="columns is-mobile">
+                                    <div class="column">
+                                        <input class="input" id="semifinals-input" disabled type="number" max="9999"
+                                            min="1" placeholder="Match">
+                                    </div>
+                                    <div class="column"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Match Video Link</label>
+                        <input class="input" type="url" min="0" placeholder="URL" id="video">
+                    </div>
+
+                </div>
+
+                <div class="columns">
+                    <div class="column">
+                        <div class="box red">
+                            <h2 class="subtitle has-text-centered has-text-black-bis">Red Alliance</h2>
+
+                            <div class="field">
+                                <label class="label">Team Numbers</label>
+                                <div class="columns">
+                                    <div class="column">
+                                        <input class="input" type="number" max="9999" min="1" placeholder="Team 1"
+                                            id="red1">
+                                    </div>
+                                    <div class="column">
+                                        <input class="input" type="number" max="9999" min="1" placeholder="Team 2"
+                                            id="red2">
+                                    </div>
+                                    <div class=" column">
+                                        <input class="input" type="number" max="9999" min="1" placeholder="Team 3"
+                                            id="red3">
+                                    </div>
+                                </div>
+                                <p class=" help is-danger"></p>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Points</label>
+
+                                <div class="columns">
+                                    <div class="column">
+                                        <!-- <label class="label">Auto Points</label> -->
+                                        <input class="input" type="number" min="0" placeholder="Auto Points"
+                                            autocomplete="off" id="redAuto">
+                                    </div>
+                                    <div class="column">
+                                        <input class="input" type="number" min="0" placeholder="Teleop Points"
+                                            autocomplete="off" id="redTeleop">
+                                    </div>
+                                    <div class="column">
+                                        <!-- <label class="label">Foul Points</label> -->
+                                        <input class="input" type="number" min="0" placeholder="Foul Points"
+                                            autocomplete="off" id="redFoul">
+                                    </div>
+                                </div>
+                                <p class=" help is-danger"></p>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column"></div>
+                                    <div class="column is-two-thirds">
+                                        <label class="label" id="rR-label">Ranking Points</label>
+                                        <input class="input" type="number" placeholder="Points" autocomplete="off"
+                                            id="redRanking">
+                                    </div>
+                                    <div class="column"></div>
+
+                                </div>
+                                <p class="help is-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box blue">
+                            <h2 class="subtitle has-text-centered has-text-black-bis">Blue Alliance</h2>
+
+                            <div class="field">
+                                <label class="label">Team Numbers</label>
+                                <div class="columns">
+                                    <div class="column">
+                                        <input class="input" type="number" placeholder="Team 1" id="blue1">
+                                    </div>
+                                    <div class="column">
+                                        <input class="input" type="number" placeholder="Team 2" id="blue2">
+                                    </div>
+                                    <div class="column">
+                                        <input class="input" type="number" placeholder="Team 3" id="blue3">
+                                    </div>
+                                </div>
+                                <p class="help is-danger"></p>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column">
+                                        <label class="label">Auto </label>
+                                        <input class="input" type="number" min="0" placeholder="Points"
+                                            autocomplete="off" id="blueAuto">
+                                    </div>
+                                    <div class="column">
+                                        <label class="label">Teleop </label>
+                                        <input class="input" type="number" min="0" placeholder="Points"
+                                            autocomplete="off" id="blueTeleop">
+                                    </div>
+                                    <div class="column">
+                                        <label class="label">Foul </label>
+                                        <input class="input" type="number" min="0" placeholder="Points"
+                                            autocomplete="off" id="blueFoul">
+                                    </div>
+                                </div>
+                                <p class=" help is-danger"></p>
+                            </div>
+
+                            <div class="field">
+                                <div class="columns">
+                                    <div class="column"></div>
+                                    <div class="column is-two-thirds">
+                                        <label class="label" id="bR-label">Ranking Points</label>
+                                        <input class="input" type="number" placeholder="Points" id="blueRanking">
+                                    </div>
+                                    <div class="column"></div>
+
+                                </div>
+                                <p class="help is-danger"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="field is-grouped-centered is-grouped">
+                    <div class="control">
+                        <button class="button is-success colour-transition" id="submit" onclick="addMatch()"
+                            onblur="resetButton()">Submit</button>
+                    </div>
+                    <div class="control">
+                        <button class="button is-link is-light" onclick="cancel();">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </section>
+    <div class="container is-hidden">
+
+    </div>
+</body>
+<script src="../js/admin.js"></script>
+
+</html>

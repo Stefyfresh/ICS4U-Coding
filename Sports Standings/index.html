@@ -1,50 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Standings</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standings</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body onload="getTeams();">
-    
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <img src="img/logo.png" height="28">
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+
+        <a href="matches" class="navbar-item">
+          Matches
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="admin">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="navbar-dropdown is-hidden" id="navMenu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+
+        <a class="navbar-item" href="matches">
+          Matches
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="admin/">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section showcase is-flex is-flex-direction-column is-justify-content-center is-align-items-center">
+    <h1 class="title-text">FIRST® Robotics Competition</h1>
+    <h2 class="subtitle-text">Combining the excitement of sport with the rigours of science and technology</h2>
+  </section>
+
+  <section class="section has-background-white-ter">
+    <div class="columns">
+      <div class="column">
+        <h3 class="bigger-text">The Ultimate Sport for the Mind</h3>
+        <p>Under strict rules and limited time and resources, teams of high school students are challenged to build
+          industrial-size robots to play a difficult field game in alliance with other teams, while also fundraising to
+          meet their goals, designing a team “brand,” and advancing respect and appreciation for STEM within the local
+          community.</p>
+      </div>
+      <div class="column">
+        <h3 class="bigger-text">Start a Team</h3>
+        <p>The really cool thing about FIRST Robotics Competition is...all skill levels are welcomed and needed,
+          technical or non-technical. FIRST Robotics Competition gives high school students and their adult mentors the
+          opportunity to work and create together to solve a common problem.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    More info on the specific event I used for my data: <a href="https://www.thebluealliance.com/event/2022on263">https://www.thebluealliance.com/event/2022on263</a>
+  </section>
+  <!-- <section class="hero showcase">
+    <div class="hero-body">
+      <p class="title">
+        Hero title
+      </p>
+      <p class="subtitle">
+        Hero subtitle
+      </p>
+    </div>
+  </section> -->
+
 </body>
 
-<script>
-    let teamData;
+<script src="js/home.js"></script>
 
-    function getTeams() {
-        teamData = localStorage['teams'];
-    }
-
-    let teams = [];
-    let team = {};
-    team['name'] = 'Toronto';
-    team['id'] = 1;
-    team['w'] = 0;
-    team['l'] = 0;
-    teams.push(team);
-
-    team = {};
-    team['name'] = 'New York';
-    team['id'] = 1;
-    team['w'] = 0;
-    team['l'] = 0;
-    teams.push(team);
-
-    team = {};
-    team['name'] = 'Houston';
-    team['id'] = 1;
-    team['w'] = 0;
-    team['l'] = 0;
-    team['games'] = [
-        {
-            'opp': 1,
-
-        }
-    ]
-    teams.push(team);
-
-    localStorage.setItem('teams', JSON.stringify(teams))
-</script>
 </html>
