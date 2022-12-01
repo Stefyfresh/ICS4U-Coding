@@ -19,8 +19,7 @@
                 <img src="../img/logo.png" height="28">
             </a>
 
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                data-target="navMenu">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -108,7 +107,286 @@
 
 
     <section class="section off-white-blue is-hidden" id="main">
-        <div class="container">
+        <div class="columns">
+            <div class="column">
+
+                <aside class="menu">
+                    <p class="menu-label">
+                        General
+                    </p>
+                    <ul class="menu-list">
+                        <li><a id="side-menu-add" class="is-active side-menu-elem" onclick="changeAdminType(0);">Add a Match</a></li>
+                        <li><a id="side-menu-edit" class="side-menu-elem" onclick="changeAdminType(1);">Edit / Delete Match</a></li>
+                    </ul>
+                </aside>
+
+            </div>
+            <div class="column is-four-fifths">
+                <section class="section py-3">
+                    <section class="section has-background-info mb-4 p-5">
+                        <div class="hero">
+                            <p class="title is-large has-text-link-light" id="main-title">Add a Match</p>
+                        </div>
+                    </section>
+
+                    <div class="field" id="error">
+                    </div>
+
+                    <div class="box is-hidden" id="loadMatch">
+                        <h1 class="subtitle">Select a Match to Load</h1>
+                        <div class="dropdown">
+                            <div class="dropdown-trigger">
+                              <button class="button" onclick="document.querySelector('#matchSelect').parentElement.classList.toggle('is-active')">
+                                <span>Select a match</span>
+                                <span class="icon is-small">
+                                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                              </button>
+                            </div>
+                            <div class="dropdown-menu" id="matchSelect" role="menu">
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="box" id="main-box">
+                        <div class="field">
+                            <div class="columns">
+                                <div class="column">
+                                    <label class="label">Match Type</label>
+
+                                    <div class="dropdown match-type-dropdown">
+                                        <div class="dropdown-trigger">
+                                            <button class="button"
+                                                onclick="document.querySelector('.match-type-dropdown').classList.toggle('is-active')">
+                                                <span id="type">Select type</span>
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="dropdown-menu" role="menu">
+                                            <div class="dropdown-content">
+                                                <a class="dropdown-item" onclick="changeMatchType(0);">
+                                                    Qualifying match
+                                                </a>
+                                                <a class="dropdown-item" onclick="changeMatchType(1);">
+                                                    Semifinals match
+                                                </a>
+                                                <a class="dropdown-item" onclick="changeMatchType(2);">
+                                                    Finals match
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="column">
+                                    <label class="label">Match Number</label>
+                                    <div class="columns is-mobile">
+                                        <div class="column">
+                                            <input class="input" type="number" max="9999" min="1" placeholder="Match"
+                                                id="id" onblur="validate('id');">
+                                            <p class="help is-danger"></p>
+
+                                        </div>
+                                        <div class="column"></div>
+                                    </div>
+
+                                    <p class=" help is-danger"></p>
+                                </div>
+                                <div class="column">
+                                    <label class="label has-text-grey" id="semifinals-number">Semifinals Number</label>
+
+                                    <div class="columns is-mobile">
+                                        <div class="column">
+                                            <input class="input" id="semifinals-input" disabled type="number" max="9999"
+                                                min="1" placeholder="Match" onblur="validate('semifinals-input');">
+                                            <p class="help is-danger"></p>
+
+                                        </div>
+                                        <div class="column"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field mb-6">
+                            <label class="label">Match Video Link</label>
+                            <input class="input" type="url" min="0" placeholder="URL" id="video" onblur="validateURL();">
+                            <p class="help is-danger"></p>
+
+                        </div>
+
+
+                        <div class="columns">
+                            <div class="column">
+                                <div class="box red">
+                                    <h2 class="subtitle has-text-centered has-text-black-bis">Red Alliance</h2>
+
+                                    <div class="field">
+                                        <label class="label">Team Numbers</label>
+                                        <div class="columns">
+                                            <div class="column">
+                                                <input class="input" type="number" max="9999" min="1"
+                                                    placeholder="Team 1" id="red1" onblur="validate('red1');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column">
+                                                <input class="input" type="number" max="9999" min="1"
+                                                    placeholder="Team 2" id="red2" onblur="validate('red2');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class=" column">
+                                                <input class="input" type="number" max="9999" min="1"
+                                                    placeholder="Team 3" id="red3" onblur="validate('red3');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <label class="label">Auto</label>
+                                                <input class="input" type="number" min="0" placeholder="Points"
+                                                    autocomplete="off" id="redAuto" onblur="validate('redAuto');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column">
+                                                <label class="label">Teleop</label>
+                                                <input class="input" type="number" min="0" placeholder="Points"
+                                                    autocomplete="off" id="redTeleop" onblur="validate('redTeleop');">
+                                                <p class="help is-danger"></p>
+
+                                                <p class=" help is-danger"></p>
+                                            </div>
+                                            <div class="column">
+                                                <label class="label">Foul</label>
+                                                <input class="input" type="number" min="0" placeholder="Points"
+                                                    autocomplete="off" id="redFoul" onblur="validate('redFoul');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="columns">
+                                            <div class="column"></div>
+                                            <div class="column is-two-thirds">
+                                                <label class="label" id="rR-label">Ranking Points</label>
+                                                <input class="input" type="number" placeholder="Points"
+                                                    autocomplete="off" id="redRanking" onblur="validate('redRanking');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="box blue">
+                                    <h2 class="subtitle has-text-centered has-text-black-bis">Blue Alliance</h2>
+
+                                    <div class="field">
+                                        <label class="label">Team Numbers</label>
+                                        <div class="columns">
+                                            <div class="column">
+                                                <input class="input" type="number" placeholder="Team 1" id="blue1"
+                                                    onblur="validate('blue1');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column">
+                                                <input class="input" type="number" placeholder="Team 2" id="blue2"
+                                                    onblur="validate('blue2');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column">
+                                                <input class="input" type="number" placeholder="Team 3" id="blue3"
+                                                    onblur="validate('blue3');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="columns">
+                                            <div class="column">
+                                                <label class="label">Auto </label>
+                                                <input class="input" type="number" min="0" placeholder="Points"
+                                                    autocomplete="off" id="blueAuto" onblur="validate('blueAuto');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column">
+                                                <label class="label">Teleop </label>
+                                                <input class="input" type="number" min="0" placeholder="Points"
+                                                    autocomplete="off" id="blueTeleop" onblur="validate('blueTeleop');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column">
+                                                <label class="label">Foul </label>
+                                                <input class="input" type="number" min="0" placeholder="Points"
+                                                    autocomplete="off" id="blueFoul" onblur="validate('blueFoul');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                        </div>
+                                        <p class=" help is-danger"></p>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="columns">
+                                            <div class="column"></div>
+                                            <div class="column is-two-thirds">
+                                                <label class="label" id="bR-label">Ranking Points</label>
+                                                <input class="input" type="number" placeholder="Points" id="blueRanking"
+                                                    onblur="validate('blueRanking');">
+                                                <p class="help is-danger"></p>
+
+                                            </div>
+                                            <div class="column"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped-centered is-grouped">
+                            <div class="control">
+                                <button class="button is-success colour-transition" id="submit" onclick="handleButton()"
+                                    onblur="resetButton()">Submit</button>
+                            </div>
+                            <div class="control">
+                                <button class="button is-link is-light" onclick="cancel();">Cancel</button>
+                            </div>
+                            <div class="control">
+                                <button class="button is-danger is-hidden" id="deleteMatch" onclick="deleteMatch();">Delete Match</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+            </div>
+        </div>
+
+
+
+
+        <!-- <div class="container">
             <form class="box" onsubmit="return false;">
                 <h1 class="title has-text-centered">Add a Match</h1>
 
@@ -214,7 +492,6 @@
 
                                 <div class="columns">
                                     <div class="column">
-                                        <!-- <label class="label">Auto Points</label> -->
                                         <input class="input" type="number" min="0" placeholder="Auto Points"
                                             autocomplete="off" id="redAuto">
                                     </div>
@@ -223,7 +500,6 @@
                                             autocomplete="off" id="redTeleop">
                                     </div>
                                     <div class="column">
-                                        <!-- <label class="label">Foul Points</label> -->
                                         <input class="input" type="number" min="0" placeholder="Foul Points"
                                             autocomplete="off" id="redFoul">
                                     </div>
@@ -314,12 +590,7 @@
                     </div>
                 </div>
             </form>
-        </div>
-
-    </section>
-    <div class="container is-hidden">
-
-    </div>
+        </div> -->
 </body>
 <script src="../js/admin.js"></script>
 

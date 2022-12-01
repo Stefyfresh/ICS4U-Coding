@@ -13,7 +13,7 @@ function init() {
 
         matches.forEach(matchElem => {
             if (matchElem.type == params.get('matchType') && matchElem.id == params.get('match') && matchElem.semiID == params.get('semiID')) match = matchElem;
-        })
+        });
 
         createScorebar();
 
@@ -78,6 +78,12 @@ function createMoreInfo() {
     document.querySelector('#blue-teleop').textContent = match.blue.teleopScore;
     document.querySelector('#blue-foul').textContent = match.blue.foulPoints;
     document.querySelector('#blue-rp').textContent = match.blue.rankingPoints;
+
+    if (match.type != 0) {
+        document.querySelector('#red-rp').classList.add('is-hidden');
+        document.querySelector('#blue-rp').classList.add('is-hidden');
+        document.querySelectorAll('.rp').forEach((elem) => elem.classList.add('is-hidden'));
+    }
 
 }
 

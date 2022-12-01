@@ -159,6 +159,10 @@ table .score-table-item {
 }
 
 .more-info-text {
-    font-size: 20pt;
+    font-size: 24pt;
     font-weight: 500;
+}
+
+.translucent {
+    opacity: 60%;
 }
