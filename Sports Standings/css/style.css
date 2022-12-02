@@ -166,3 +166,7 @@ table .score-table-item {
 .translucent {
     opacity: 60%;
 }
+
+.filter-input {
+    width: 200px;
+}

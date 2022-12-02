@@ -258,7 +258,7 @@ function createPaginationButtons() {
     let a = document.createElement('a');
     a.classList.add('pagination-link');
     a.classList.add('pagination-left-arrow');
-    if (paginationPage == 0) a.classList.add('has-background-grey-lighter');
+    if (paginationPage == 0) a.setAttribute('disabled', '');
     a.onclick = () => paginate(0);
     a.append(i1, i2);
     li.append(a);
@@ -270,7 +270,7 @@ function createPaginationButtons() {
     a = document.createElement('a');
     a.classList.add('pagination-link');
     a.classList.add('pagination-left-arrow');
-    if (paginationPage == 0) a.classList.add('has-background-grey-lighter');
+    if (paginationPage == 0) a.setAttribute('disabled', '');
     a.onclick = () => paginate(paginationPage - 1);
     a.append(i);
     li.append(a);
@@ -296,7 +296,7 @@ function createPaginationButtons() {
     a = document.createElement('a');
     a.classList.add('pagination-link');
     a.classList.add('pagination-right-arrow');
-    if (paginationPage == max) a.classList.add('has-background-grey-lighter');
+    if (paginationPage == max) a.setAttribute('disabled', '');
     a.onclick = () => paginate(paginationPage + 1);
     a.append(i);
     li.append(a);
@@ -309,7 +309,7 @@ function createPaginationButtons() {
     a = document.createElement('a');
     a.classList.add('pagination-link');
     a.classList.add('pagination-right-arrow');
-    if (paginationPage == max) a.classList.add('has-background-grey-lighter');
+    if (paginationPage == max) a.setAttribute('disabled', '');
     a.onclick = () => paginate(parseInt(numMatchesForThisPage / numElemPerPage));
     a.append(i1, i2);
     li.append(a);

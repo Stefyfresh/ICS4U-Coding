@@ -103,37 +103,43 @@
                     </ul>
                 </div>
 
-                <div class="container">
-                    <button class="button is-pulled-right is-hidden" onclick="document.location = '../matches/'" id="reset-filters">Reset Filters</button>
+                <div class="container field">
+                    <input class="input filter-input" type="number" placeholder="Filter by Team" id="filter" min="1" max="9999">
+                            <button class="button" onclick="document.location = `?team=${document.querySelector('#filter').value}`">Enter Filter</button>
+
+                    <button class="button is-pulled-right is-hidden" onclick="document.location = '../matches/'"
+                        id="reset-filters">Reset Filters</button>
+                </div>
 
 
 
-                    <table id="standings" class="table is-fullwidth">
-                        <thead>
-                            <tr>
-                                <th class="main-table-header header-id" onclick="createTable(currentMatchType, 'id');">
-                                    <i></i>Match</th>
-                                <th class="small"><i></i>Video</th>
-                                <!-- <th class="has-text-right"><i></i>Red Alliance</th> -->
-                                <th>
-                                    <span class="main-table-header header-red"
-                                        onclick="createTable(currentMatchType, 'red');"><i></i>Red Alliance</span>
-                                    <span class="is-pulled-right main-table-header header-blue"
-                                        onclick="createTable(currentMatchType, 'blue');"><i></i>Blue
-                                        Alliance</span>
-                                </th>
-                                <!-- <th><i></i>Blue Alliance</th> -->
+                <table id="standings" class="table is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th class="main-table-header header-id" onclick="createTable(currentMatchType, 'id');">
+                                <i></i>Match
+                            </th>
+                            <th class="small"><i></i>Video</th>
+                            <!-- <th class="has-text-right"><i></i>Red Alliance</th> -->
+                            <th>
+                                <span class="main-table-header header-red"
+                                    onclick="createTable(currentMatchType, 'red');"><i></i>Red Alliance</span>
+                                <span class="is-pulled-right main-table-header header-blue"
+                                    onclick="createTable(currentMatchType, 'blue');"><i></i>Blue
+                                    Alliance</span>
+                            </th>
+                            <!-- <th><i></i>Blue Alliance</th> -->
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div id="table-info">
-                        <ul id="pagination-list"></ul>
-                    </div>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div id="table-info">
+                    <ul id="pagination-list"></ul>
                 </div>
             </div>
+        </div>
 
     </section>
 

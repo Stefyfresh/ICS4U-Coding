@@ -115,8 +115,10 @@
                         General
                     </p>
                     <ul class="menu-list">
-                        <li><a id="side-menu-add" class="is-active side-menu-elem" onclick="changeAdminType(0);">Add a Match</a></li>
-                        <li><a id="side-menu-edit" class="side-menu-elem" onclick="changeAdminType(1);">Edit / Delete Match</a></li>
+                        <li><a id="side-menu-add" class="is-active side-menu-elem" onclick="changeAdminType(0);">Add a
+                                Match</a></li>
+                        <li><a id="side-menu-edit" class="side-menu-elem" onclick="changeAdminType(1);">Edit / Delete
+                                Match</a></li>
                     </ul>
                 </aside>
 
@@ -136,16 +138,17 @@
                         <h1 class="subtitle">Select a Match to Load</h1>
                         <div class="dropdown">
                             <div class="dropdown-trigger">
-                              <button class="button" onclick="document.querySelector('#matchSelect').parentElement.classList.toggle('is-active')">
-                                <span>Select a match</span>
-                                <span class="icon is-small">
-                                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                              </button>
+                                <button class="button"
+                                    onclick="document.querySelector('#matchSelect').parentElement.classList.toggle('is-active')">
+                                    <span>Select a match</span>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </button>
                             </div>
                             <div class="dropdown-menu" id="matchSelect" role="menu">
                             </div>
-                          </div>
+                        </div>
                     </div>
 
                     <div class="box" id="main-box">
@@ -214,7 +217,8 @@
 
                         <div class="field mb-6">
                             <label class="label">Match Video Link</label>
-                            <input class="input" type="url" min="0" placeholder="URL" id="video" onblur="validateURL();">
+                            <input class="input" type="url" min="0" placeholder="URL" id="video"
+                                onblur="validateURL();">
                             <p class="help is-danger"></p>
 
                         </div>
@@ -373,7 +377,8 @@
                                 <button class="button is-link is-light" onclick="cancel();">Cancel</button>
                             </div>
                             <div class="control">
-                                <button class="button is-danger is-hidden" id="deleteMatch" onclick="deleteMatch();">Delete Match</button>
+                                <button class="button is-danger is-hidden" id="deleteMatch"
+                                    onclick="deleteMatch();">Delete Match</button>
                             </div>
                         </div>
                     </div>

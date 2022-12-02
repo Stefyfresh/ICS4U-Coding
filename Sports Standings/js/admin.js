@@ -73,6 +73,7 @@ function addMatch() {
         //Validation check
         check();
 
+        //Ad data
         addJSON(
             matchType,
             parseInt(id.value),
@@ -122,6 +123,7 @@ function editMatch() {
         return;
     }
 
+    //Edit array data
     matches.splice(index, 1, {
         "type": matchType,
         "id": parseInt(id.value),
@@ -150,6 +152,8 @@ function editMatch() {
     resetFields();
 
     message(2, 'Match saved successfully.');
+    document.querySelector('#main-box').classList.remove('translucent');
+
 }
 
 
@@ -166,6 +170,7 @@ function deleteMatch() {
         message(2, 'Match deleted successfully.');
     } 
 
+    document.querySelector('#main-box').classList.remove('translucent');
     resetFields();
 }
 
@@ -193,8 +198,6 @@ function resetFields() {
     document.querySelectorAll('.help.is-danger').forEach(elem => elem.textContent = "");
     document.querySelectorAll('.input').forEach(elem => elem.classList.remove('is-danger'));
     matchType = -1;
-
-    if (match != undefined) document.querySelector('#main-box').classList.add('translucent');
 
     postToMatchesMenu();
 
@@ -551,5 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         });
     });
+
+    
 
 });
