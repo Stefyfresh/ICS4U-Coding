@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JS</title>
+</head>
+<script>
+    //If we are using await we need to define the function as async
+    async function fetchUsersAsync() {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users');
+        //await waits for the asynchronous request to complete and the stores the response in res
+
+        console.log(res);
+        const data = await res.json();
+        console.log(data);
+    }
+
+    //Also works
+    function fetchUsersThen() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then((res) => res.json())
+        .then(body => console.log(body));
+    }
+
+    //Does not work
+    function fetchUsers() {
+        const res = fetch('https://jsonplaceholder.typicode.com/users');
+
+        console.log(res);
+    }
+
+    fetchUsersThen();
+
+    // console.log(1);
+    // setTimeout(() => {
+    //     console.log(2);
+    // }, 1000);
+    // console.log(3);
+</script>
+</html>
