@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Messenger App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.css">
+    <link rel="shortcut icon" href="img/icon.png">
+</head>
+<body>
+    <div class="container">
+        <section class="hero is-small">
+            <div class="hero-body">
+            <p class="title">
+                Text Someone!
+            </p>
+            </div>
+        </section>
+        <div class="box has-background-white-bis">
+            <div id="messages"></div>
+            <form id="text" class="form">
+                <div class="field">
+                    <label class="label">Phone Number</label>
+                    <div class="control has-icons-left">
+                        <input type="tel" id="number" class="input" onblur="validate()">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-phone"></i>
+                          </span>
+                        <p class="help is-danger" id="phoneError"></p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                        <textarea id="body" cols="30" rows="10" class="textarea"></textarea>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Media URL (Optional)</label>
+                    <div class="control">
+                        <input type="tel" id="mediaURL" class="input" onblur="validateURL()">
+                        <p class="help is-danger" id="phoneError"></p>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input type="submit" class="button is-success" id="submit" onblur="resetButton()">
+                        <p class="help is-danger" id="error"></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>    
+</body>
+<script src="js/main.js"></script>
+</html>
