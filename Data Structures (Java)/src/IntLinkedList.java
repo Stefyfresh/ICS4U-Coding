@@ -20,6 +20,10 @@ public class IntLinkedList {
         return true;
     }
 
+    public Integer getFront() {
+        return head.getData();
+    }
+
     /**
      * Adds a number to the end of the list
      * @param number
@@ -78,43 +82,12 @@ public class IntLinkedList {
         return item.getData();
     }
 
-    public int size() {
-        return length;
-    }
-
-    /**
-     * Visualizes the linked list in the console
-     */
-    public void visualize() {
-        if (length == 0) {
-            System.out.print("[ ]");
-            System.out.println();
-            return;
-        }
-
-        System.out.print("[ ");
-
-        IntNode item = head;
-        for (int i = 0; i < length; i++) {
-            try {
-                System.out.print(item.getData());
-            } catch (Exception e) {
-                System.out.println();
-                throw new IllegalStateException("A code error occurred; The length is not valid.");
-            }
-            item = item.getLink();
-            if (item != null) System.out.print(", ");
-        }
-
-        System.out.print(" ]");
-        System.out.println();
-    }
-
     public boolean isEmpty() {
         return (head == null) ? true : false;
     }
 
     public Integer remove(Integer data) {
+        if (head == null) return null;
         if (head != null && head.getData() == data){ 
             head = head.getLink();
             length--;
@@ -132,5 +105,61 @@ public class IntLinkedList {
         }
 
         return null;
+    }
+
+    public Integer removeFront() {
+        if (head == null) return null;
+
+        Integer data = head.getData();
+        head = head.getLink();
+
+        length--;
+        return data;
+    }
+
+
+    public int size() {
+        return length;
+    }
+
+    /**
+     * Visualizes the linked list in the console
+     */
+    public void visualize() {
+        System.out.println(toString());
+    }
+
+    @Override
+    public String toString() {
+        String out = "";
+        if (length == 0) {
+            out = "[ ]";
+            return out;
+        }
+
+        out += "[ ";
+
+        IntNode item = head;
+        while(item != null) {
+            out += item.getData();
+            item = item.getLink();
+            if (item != null) out += ", ";
+        }
+
+        out += " ]";
+        return out;
+    }
+
+    public int search(Integer data) {
+        int distance = 0;
+
+        IntNode item = head;
+        while(item != null) {
+            if (data == item.getData()) return distance;
+            distance++;
+            item = item.getLink();
+        }
+
+        return -1;
     }
 }
