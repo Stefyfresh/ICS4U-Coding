@@ -72,8 +72,10 @@ public class IntLinkedList {
      * @return
      */
     public Integer get(int index) {
-        if (index >= length) throw new IndexOutOfBoundsException("Cannot get element at index " + index + ", max index is " + length);
-
+        if (index >= length && index > 0) throw new IndexOutOfBoundsException("Cannot get element at index " + index + ", max index is " + length);
+        if (index < 0) throw new IllegalArgumentException("Index cannot be negative");
+        if (head == null) throw new IllegalStateException("Cannot get items from an empty list");
+        
         IntNode item = head;
         for (int i = 0; i < index; i++) {
             item = item.getLink();

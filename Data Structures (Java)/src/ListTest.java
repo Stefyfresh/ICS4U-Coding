@@ -20,8 +20,34 @@ public class ListTest {
         // test.visualize();
         // test.remove(15);
         // test.visualize();
-        testAddNodes();
+        // testAddNodes();
         // testRemoveNodes();
+        testGetNodes();
+    }
+
+    private static void testGetNodes() {
+        IntLinkedList list = getList();
+
+        System.out.println(list.get(0));
+        System.out.println(list.get(list.size() - 1));
+        System.out.println(list.get(2));
+        try {
+            System.out.println(list.get(10));
+        } catch (Exception e) {
+         System.out.println(e);   
+        }
+        try {
+            System.out.println(new IntLinkedList().get(-1));
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        try {
+            System.out.println(list.get(-1));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
 
     private static void testRemoveNodes() {
@@ -69,5 +95,17 @@ public class ListTest {
         System.out.println(list.search(4));
         System.out.println(list.search(23));
         list.visualize();
+    }
+
+    private static IntLinkedList getList() {
+        IntLinkedList list = new IntLinkedList();
+
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        return list;
     }
 }
