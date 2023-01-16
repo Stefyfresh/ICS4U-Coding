@@ -20,6 +20,10 @@ public class IntLinkedList {
         return true;
     }
 
+    /**
+     * Gets the front element
+     * @return
+     */
     public Integer getFront() {
         return head.getData();
     }
@@ -88,6 +92,11 @@ public class IntLinkedList {
         return (head == null) ? true : false;
     }
 
+    /**
+     * Removes data from the list
+     * @param data
+     * @return
+     */
     public Integer remove(Integer data) {
         if (head == null) return null;
         if (head != null && head.getData() == data){ 
@@ -109,6 +118,10 @@ public class IntLinkedList {
         return null;
     }
 
+    /**
+     * Removes the front element
+     * @return
+     */
     public Integer removeFront() {
         if (head == null) return null;
 
@@ -124,9 +137,6 @@ public class IntLinkedList {
         return length;
     }
 
-    /**
-     * Visualizes the linked list in the console
-     */
     public void visualize() {
         System.out.println(toString());
     }
@@ -152,6 +162,11 @@ public class IntLinkedList {
         return out;
     }
 
+    /**
+     * Returns the index of the data to search
+     * @param data
+     * @return
+     */
     public int search(Integer data) {
         int distance = 0;
 
