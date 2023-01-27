@@ -14,6 +14,26 @@ public class TestIntBST {
 
         bst.remove(11);
         if (!bst.inOrderTraversal().trim().equals("1 3 6 7 8 9 13")) return false;
+        
+        bst.remove(13);
+        if (!bst.inOrderTraversal().trim().equals("1 3 6 7 8 9")) return false;
+
+        bst.remove(8);
+        if (!bst.inOrderTraversal().trim().equals("1 3 6 7 9")) return false;
+
+        bst.remove(100);
+        if (!bst.inOrderTraversal().trim().equals("1 3 6 7 9")) return false;
+        
+        bst = new IntBinarySearchTree();
+        bst.add(3);
+        bst.remove(3);
+        if (!bst.inOrderTraversal().trim().equals("")) return false;
+
+        bst.add(3);
+        bst.add(2);
+        bst.remove(3);
+        if (!bst.inOrderTraversal().trim().equals("2")) return false;
+
 
         return true;
     }

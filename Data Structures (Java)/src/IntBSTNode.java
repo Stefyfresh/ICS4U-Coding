@@ -45,4 +45,8 @@ public class IntBSTNode {
     public boolean hasRight() {
         return right != null;
     }
+
+    public int numChildren() {
+        return ((left == null) ? 0 : 1) + ((right == null) ? 0 : 1);
+    }
 }

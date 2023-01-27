@@ -15,18 +15,21 @@ public class IntBinarySearchTree {
     }
     
     public String inOrderTraversal() {
+        if (root == null) return "";
         String result = "";
         result += inOrderTraversal(root, result);
         return result;
     }
 
     public String preOrderTraversal() {
+        if (root == null) return "";
         String result = "";
         result += preOrderTraversal(root, result);
         return result;
     }
 
     public String postOrderTraversal() {
+        if (root == null) return "";
         String result = "";
         result += postOrderTraversal(root, result);
         return result;
@@ -136,6 +139,7 @@ public class IntBinarySearchTree {
     // }
 
     private IntBSTNode findLargest(IntBSTNode treeRoot) {
+        if (treeRoot == null) return null;
         if (treeRoot.getRight() == null) return treeRoot;
         return findLargest(treeRoot.getRight());
     }
@@ -147,42 +151,61 @@ public class IntBinarySearchTree {
     private boolean removeRecursive(IntBSTNode treeRoot, Integer val) {
         if (treeRoot == null) return false;
 
-        // Not working?
         Integer compare = treeRoot.getData();
+        // Left 
         if (val < compare) {
-            if (treeRoot.getLeft() == null) return false;
-        }
-        if (val > compare && treeRoot.getRight() == null) return false;
-
-        if (compare == val) {
-            if (numChildren(treeRoot) == 0) {
-                treeRoot = null;
-            } else if (!treeRoot.hasLeft()) {
-                treeRoot = treeRoot.getRight();
-            } else if (!treeRoot.hasRight()) {
-                treeRoot = treeRoot.getLeft();
-            } else if (numChildren(treeRoot) == 2) {
-                treeRoot.setData(findLargest(treeRoot.getLeft()).getData());
-                removeLargest(root.getLeft());
+            if (treeRoot.hasLeft() && treeRoot.getLeft().getData() == val) {
+                IntBSTNode node = treeRoot.getLeft();
+                if (node.numChildren() == 0) treeRoot.setLeft(null);
+                else if (node.numChildren() == 1) {
+                    if (node.hasLeft()) {
+                        treeRoot.setLeft(node.getLeft());
+                    } else if (node.hasRight()) {
+                        treeRoot.setLeft(node.getRight());
+                    }
+                }
             }
-        } else if (val > compare) {
-            return removeRecursive(treeRoot.getRight(), val);
-        } else if (val < compare) {
             return removeRecursive(treeRoot.getLeft(), val);
+        }
+        // Right
+        if (val > compare) {
+            if (treeRoot.hasRight() && treeRoot.getRight().getData() == val) {
+                IntBSTNode node = treeRoot.getRight();
+                if (node.numChildren() == 0) treeRoot.setRight(null);
+                else if (node.numChildren() == 1) {
+                    if (node.hasLeft()) {
+                        treeRoot.setRight(node.getLeft());
+                    } else if (node.hasRight()) {
+                        treeRoot.setRight(node.getRight());
+                    }
+                }
+            }
+            return removeRecursive(treeRoot.getRight(), val);
+        }
+
+        if (val == compare) {
+            if (treeRoot.numChildren() == 2) {
+                treeRoot.setData(findLargest(treeRoot.getLeft()).getData());
+                if (!treeRoot.getLeft().hasRight()) treeRoot.setLeft(null);
+                else removeLargest(treeRoot.getLeft());
+            } else if (treeRoot.numChildren() == 0) {
+                root = null;
+            } else if (treeRoot.numChildren() == 1) {
+                treeRoot.setData((treeRoot.hasLeft()) ? treeRoot.getLeft().getData() : treeRoot.getRight().getData());
+                if (!treeRoot.getLeft().hasRight()) treeRoot.setLeft(null);
+                else removeLargest(treeRoot.getLeft());
+            }
         }
         return true;
     }
 
     private void removeLargest(IntBSTNode treeRoot) {
-        if (treeRoot.getRight() == null) treeRoot = null;
+        if (treeRoot.getRight() == null) throw new IllegalStateException();
+        if (treeRoot.getRight().getRight() == null){
+            treeRoot.setRight(null);
+            return;
+        } 
         removeLargest(treeRoot.getRight());
-    }
-
-    private int numChildren(IntBSTNode node) {
-        int num = 0;
-        if (node.hasLeft()) num++;
-        if (node.hasRight())  num++;
-        return num;
     }
 
     public void visualize() {
