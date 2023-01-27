@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "serve",
+			"path": "Vue JS/task-tracker-app",
+			"problemMatcher": [],
+			"label": "npm: serve - Vue JS/task-tracker-app",
+			"detail": "vue-cli-service serve"
+		}
+	]
+}
