@@ -1,8 +1,8 @@
 
 <template>
     <header>
-        <h1>Task Tracker</h1>
-        <Button @btn-click="$emit('toggle-form')" :text="isActive ? 'Close' : 'Add Task'" :color="isActive ? 'red' : 'green'"></Button>
+        <h1>{{title}}</h1>
+        <Button @btn-click="$emit('toggle-form')" :text="isActive ? 'Close' : 'Add Task'" :color="isActive ? 'red' : 'green'" v-show="homePage"></Button>
     </header>
 </template>
 
@@ -18,6 +18,15 @@ export default {
     },
     components: {
         Button
+    },
+    computed: {
+        homePage() {
+            if (this.$route.path === '/') {
+                return true
+            } else {
+                return false
+            }
+        }
     }
     
 }
