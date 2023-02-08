@@ -41,7 +41,10 @@ app.component('product-display', {
 
       </div>
     </div>
-  </div>`,
+    <review-list v-if="reviews.length > 0" :reviews="reviews"></review-list>
+    <review-form @review-submitted="addReview"></review-form>
+  </div>
+  `,
    data() {
       return {
          product: 'Socks',
@@ -51,32 +54,36 @@ app.component('product-display', {
          variants: [
             { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
             { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
-         ]
-      }
+         ],
+         reviews: []
+      };
    },
    methods: {
       addToCart() {
-         this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
+         this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
       },
       updateVariant(index) {
-         this.selectedVariant = index
+         this.selectedVariant = index;
+      },
+      addReview(review) {
+         this.reviews.push(review);
       }
    },
    computed: {
       title() {
-         return this.brand + ' ' + this.product
+         return this.brand + ' ' + this.product;
       },
       image() {
-         return this.variants[this.selectedVariant].image
+         return this.variants[this.selectedVariant].image;
       },
       inStock() {
-         return this.variants[this.selectedVariant].quantity
+         return this.variants[this.selectedVariant].quantity;
       },
       shipping() {
          if (this.premium) {
-            return 'Free'
+            return 'Free';
          }
-         return 2.99
+         return 2.99;
       }
    }
-})
+});
